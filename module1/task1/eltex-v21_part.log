@@ -1,0 +1,201 @@
+[?2004h[01;32meltex-v21@eltex-2026-summer[00m:[01;34m~[00m$ [7mexport TERM=dumb[27mexport TERM=dumb
+[?2004l[01;32meltex-v21@eltex-2026-summer[00m:[01;34m~[00m$ alias ls='ls --color=never'
+[01;32meltex-v21@eltex-2026-summer[00m:[01;34m~[00m$ PS1='$ '
+$ whoami
+eltex-v21
+$ echo "$USER"
+eltex-v21
+$                                                                                $                                                                                                                                                                                                                                      $                                                                                $                                                                                                                                                                                                                                      $ ls
+eltex-v21_part.log  report_part1.txt
+$ ls
+ls           lsattr       lsblk        lsb_release  lscpu        lsfd         lsinitramfs  lsipc        lsirq        lslocks      lslogins     lsmem        lsmod        lsns         lsof         lspci        lsusb
+$ ls                                                                               $ ls                                                                                                                                                                                                                                     $ ls  уср   echo $HIST
+$HISTCMD       $HISTCONTROL   $HISTFILE      $HISTFILESIZE  $HISTSIZE      
+$ echo $HIST
+$HISTCMD       $HISTCONTROL   $HISTFILE      $HISTFILESIZE  $HISTSIZE      
+$ echo $HIST
+$HISTCMD       $HISTCONTROL   $HISTFILE      $HISTFILESIZE  $HISTSIZE      
+$ echo $HIST
+$HISTCMD       $HISTCONTROL   $HISTFILE      $HISTFILESIZE  $HISTSIZE      
+$ echo $HIST
+$HISTCMD       $HISTCONTROL   $HISTFILE      $HISTFILESIZE  $HISTSIZE      
+$ echo $HIST$ ec$ ech$ echo$ echo $HIST $HIST $HIST $ ec$HIST $ e$HIST $ 
+Display all 903 possibilities? (y or n)
+$ $HIST$ $ $$ $H$ $HI$ $HIS$ $HIST     lsecho "$USER"         ; $HISTFILEs SIZE 
+2000
+$ echo $HISTSIZE
+1000
+$ echo $HISTFILESIZE                  ls -d ~/.*
+/home/eltex-v21/.bash_history  /home/eltex-v21/.bash_logout  /home/eltex-v21/.bashrc  /home/eltex-v21/.config  /home/eltex-v21/.lesshst  /home/eltex-v21/.profile  /home/eltex-v21/.viminfo
+$                                                                                $ export HISTTIMEFORMAT="%d.%m.%Y %H:%M:%S "
+$ history
+    1  06.07.2026 21:13:42 man -Lru man
+    2  06.07.2026 21:13:42 export LANG=ru_RU.UTF8
+    3  06.07.2026 21:13:42 echo "export LANG=ru_RU.UTF8" >>~/.bashrc
+    4  06.07.2026 21:13:42 locale
+    5  06.07.2026 21:13:42 exit
+    6  06.07.2026 21:13:42 screen
+    7  06.07.2026 21:13:42 screen -ls
+    8  06.07.2026 21:13:42 screen -dmS top top
+    9  06.07.2026 21:13:42 screen
+   10  06.07.2026 21:13:42 -dm
+   11  06.07.2026 21:13:42 -S top
+   12  06.07.2026 21:13:42 screen -dmS top top
+   13  06.07.2026 21:13:42 screen -ls
+   14  06.07.2026 21:13:42 w
+   15  06.07.2026 21:13:42 screen
+   16  06.07.2026 21:13:42 D
+   17  06.07.2026 21:13:42 w
+   18  06.07.2026 21:13:42 w
+   19  06.07.2026 21:13:42 locale -a
+   20  06.07.2026 21:13:42 export LANG=ru_RU.utf8
+   21  06.07.2026 21:13:42 export LANGUAGE=ru_RU:ru
+   22  06.07.2026 21:13:42 export LC_ALL=ru_RU.utf8
+   23  06.07.2026 21:13:42 locale
+   24  06.07.2026 21:13:42 date
+   25  06.07.2026 21:13:42 screen -ls
+   26  06.07.2026 21:13:42 screen -S 76053 -X quit
+   27  06.07.2026 21:13:42 screen -S 75316 -X quit
+   28  06.07.2026 21:13:42 screen -S 51838 -X quit
+   29  06.07.2026 21:13:42 screen -S 8234 -X quit
+   30  06.07.2026 21:13:42 screen -ls
+   31  06.07.2026 21:13:42 screen -r top
+   32  06.07.2026 21:13:42 screen -r 94343
+   33  06.07.2026 21:13:42 screen -ls
+   34  06.07.2026 21:13:42 screen -dmS top top
+   35  06.07.2026 21:13:42 screen -ls
+   36  06.07.2026 21:13:42 screen -r 321673
+   37  06.07.2026 21:13:42 screen -ls
+   38  06.07.2026 21:13:42 screen -r top
+   39  06.07.2026 21:13:42 screen -ls
+   40  06.07.2026 21:13:42 screen
+   41  06.07.2026 21:13:42 vi report_part1.txt
+   42  06.07.2026 21:13:42 screen -ls
+   43  06.07.2026 21:13:42 screen -s 452129 -X quit
+   44  06.07.2026 21:13:42 screen -S 452129.pts-52.eltex-2026-summer -X quit
+   45  06.07.2026 21:13:42 screen -ls
+   46  06.07.2026 21:13:42 screen -r 462315.pts-71.eltex-2026-summer
+   47  06.07.2026 21:13:42 ls
+   48  06.07.2026 21:13:42 vi report_part1.txt 
+   49  06.07.2026 21:13:42 screen -ls
+   50  06.07.2026 21:13:42 screen -S 462315.pts-71.eltex-2026-summer -X quit
+   51  06.07.2026 21:13:42 screen -ls
+   52  06.07.2026 21:13:42 screen -report
+   53  06.07.2026 21:13:42 screen -S report
+   54  06.07.2026 21:13:42 screen -ls
+   55  06.07.2026 21:13:42 logout
+   56  06.07.2026 21:13:42 ls
+   57  06.07.2026 21:13:42 vi report_part1.txt 
+   58  06.07.2026 21:13:42 exit
+   59  06.07.2026 21:13:42 watch /usr/bin/vmstat
+   60  06.07.2026 21:13:42 screen -ls
+   61  06.07.2026 21:13:42 screen -r report
+   62  06.07.2026 21:13:42 screen -ls
+   63  06.07.2026 21:13:42 screen -S 321673.top -X quit
+   64  06.07.2026 21:13:42 screen -ls
+   65  06.07.2026 21:13:42 logout
+   66  06.07.2026 21:14:20 export TERM=dumb
+   67  06.07.2026 21:14:41 alias ls='ls --color=never'
+   68  06.07.2026 21:15:10 PS1='$ '
+   69  06.07.2026 21:15:52 whoami
+   70  06.07.2026 21:16:10 echo "$USER"
+   71  06.07.2026 22:27:46 ls
+   72  06.07.2026 23:05:27 echo $HISTFILESIZE 
+   73  06.07.2026 23:06:09 echo $HISTSIZE
+   74  06.07.2026 23:15:33 ls -d ~/.*
+   75  06.07.2026 23:34:06 export HISTTIMEFORMAT="%d.%m.%Y %H:%M:%S "
+   76  06.07.2026 23:34:24 history
+$ history$ export HISTTIMEFORMAT="%d.%m.%Y %H:%M:%S "$ ls -d ~/.*                                $ ls -d ~/.*$ echo $HISTSIZEFILESIZE $ ls                 $ lsecho "$USER"$ whoami      $ PS1='$ '$ alias ls='ls --color=never'$ export TERM=dumb           $ logout          $ logout$ export TERM=dumb$ alias ls='ls --color=never'$ PS1='$ '                   $ PS1='$ '$ whoami  $ echo "$USER"$ ls          $ lsecho $HISTFILESIZE SIZE     $ ls -d ~/.*    $ export HISTTIMEFORMAT="%d.%m.%Y %H:%M:%S "$ history                                   $ history$        $                                                                                                                                                                                                                                      $ history$ export HISTTIMEFORMAT="%d.%m.%Y %H:%M:%S "$ ls -d ~/.*                                $ ls -d ~/.*$ echo $HISTSIZEFILESIZE $ ls                 $ lsecho "$USER"$ ls          $ lsecho $HISTFILESIZE SIZE     $ ls -d ~/.*    $ export HISTTIMEFORMAT="%d.%m.%Y %H:%M:%S "$ history                                   $ history$        $ history$ export HISTTIMEFORMAT="%d.%m.%Y %H:%M:%S "$ ls -d ~/.*                                $ ls -d ~/.*$ echo $HISTSIZEFILESIZE $ ls                 $ lsecho "$USER"$ ls          $ lsecho $HISTFILESIZE SIZE     $ ls -d ~/.*    $ export HISTTIMEFORMAT="%d.%m.%Y %H:%M:%S "$ history                                   $ history$        $ date
+Пн 06 июл 2026 23:42:45 +07
+$ history | tail
+   69  06.07.2026 21:15:52 whoami
+   70  06.07.2026 21:16:10 echo "$USER"
+   71  06.07.2026 22:27:46 ls
+   72  06.07.2026 23:05:27 echo $HISTFILESIZE 
+   73  06.07.2026 23:06:09 echo $HISTSIZE
+   74  06.07.2026 23:15:33 ls -d ~/.*
+   75  06.07.2026 23:34:06 export HISTTIMEFORMAT="%d.%m.%Y %H:%M:%S "
+   76  06.07.2026 23:34:24 history
+   77  06.07.2026 23:42:45 date
+   78  06.07.2026 23:43:14 history | tail
+$ tail ~/.bash_history
+ls
+vi report_part1.txt 
+exit
+watch /usr/bin/vmstat
+screen -ls
+screen -r report
+screen -ls
+screen -S 321673.top -X quit
+screen -ls
+logout
+$ export PROMPT_COMMAND='history -a'export PROMPT_COMMAND='history -a'                                                                    export PROMPT_COMMAND='history -a'
+$ whoami
+eltex-v21
+$ history | tail
+   73  06.07.2026 23:06:09 echo $HISTSIZE
+   74  06.07.2026 23:15:33 ls -d ~/.*
+   75  06.07.2026 23:34:06 export HISTTIMEFORMAT="%d.%m.%Y %H:%M:%S "
+   76  06.07.2026 23:34:24 history
+   77  06.07.2026 23:42:45 date
+   78  06.07.2026 23:43:14 history | tail
+   79  06.07.2026 23:43:47 tail ~/.bash_history
+   80  07.07.2026 00:27:39 export PROMPT_COMMAND='history -a'
+   81  07.07.2026 00:28:41 whoami
+   82  07.07.2026 00:28:55 history | tail
+$ tail ~/.bash_history
+#1783356194
+history | tail
+#1783356227
+tail ~/.bash_history
+#1783358859
+export PROMPT_COMMAND='history -a'
+#1783358921
+whoami
+#1783358935
+history | tail
+$ DATE=$(date +%d.%m.%Y)
+$ echo $DATE
+07.07.2026
+$ TIME=$(date +%H:%M:%S)
+$ echo $TIME
+00:48:59
+$ DATE_TIME="$DATE $TIME"
+$ echo "$DATE_TIME"
+07.07.2026 00:48:59
+$ ls /bin/*[0-9]* /sbin/*[0-9]*
+/bin/addr2line			/bin/gcov-12			/bin/ping6	    /bin/sha512sum		     /bin/x86_64-linux-gnu-gcc-nm-12	    /bin/x86_64-linux-gnu-ld.gold      /sbin/e2undo
+/bin/b2sum			/bin/gcov-dump-12		/bin/pl2pm	    /bin/ssh-argv0		     /bin/x86_64-linux-gnu-gcc-ranlib	    /bin/x86_64-linux-gnu-lto-dump     /sbin/e4crypt
+/bin/base32			/bin/gcov-tool-12		/bin/pod2html	    /bin/systemd-id128		     /bin/x86_64-linux-gnu-gcc-ranlib-12    /bin/x86_64-linux-gnu-lto-dump-12  /sbin/e4defrag
+/bin/base64			/bin/grub-menulst2cfg		/bin/pod2man	    /bin/traceroute6		     /bin/x86_64-linux-gnu-gcov		    /bin/x86_64-linux-gnu-nm	       /sbin/fsck.ext2
+/bin/bunzip2			/bin/grub-mkpasswd-pbkdf2	/bin/pod2text	    /bin/traceroute6.db		     /bin/x86_64-linux-gnu-gcov-12	    /bin/x86_64-linux-gnu-objcopy      /sbin/fsck.ext3
+/bin/bzip2			/bin/grub-syslinux2cfg		/bin/pod2usage	    /bin/x86_64			     /bin/x86_64-linux-gnu-gcov-dump	    /bin/x86_64-linux-gnu-objdump      /sbin/fsck.ext4
+/bin/bzip2recover		/bin/h2ph			/bin/py3clean	    /bin/x86_64-linux-gnu-addr2line  /bin/x86_64-linux-gnu-gcov-dump-12     /bin/x86_64-linux-gnu-ranlib       /sbin/killall5
+/bin/c89			/bin/h2xs			/bin/py3compile     /bin/x86_64-linux-gnu-ar	     /bin/x86_64-linux-gnu-gcov-tool	    /bin/x86_64-linux-gnu-readelf      /sbin/mke2fs
+/bin/c89-gcc			/bin/i386			/bin/py3versions    /bin/x86_64-linux-gnu-as	     /bin/x86_64-linux-gnu-gcov-tool-12     /bin/x86_64-linux-gnu-size	       /sbin/mkfs.ext2
+/bin/c99			/bin/linux32			/bin/pydoc3	    /bin/x86_64-linux-gnu-c++filt    /bin/x86_64-linux-gnu-gold		    /bin/x86_64-linux-gnu-strings      /sbin/mkfs.ext3
+/bin/c99-gcc			/bin/linux64			/bin/pydoc3.11	    /bin/x86_64-linux-gnu-cpp	     /bin/x86_64-linux-gnu-gp-archive	    /bin/x86_64-linux-gnu-strip        /sbin/mkfs.ext4
+/bin/cpan5.36-x86_64-linux-gnu	/bin/lto-dump-12		/bin/pygettext3     /bin/x86_64-linux-gnu-cpp-12     /bin/x86_64-linux-gnu-gp-collect-app   /sbin/dumpe2fs		       /sbin/resize2fs
+/bin/cpp-12			/bin/md5sum			/bin/pygettext3.11  /bin/x86_64-linux-gnu-dwp	     /bin/x86_64-linux-gnu-gp-display-html  /sbin/e2freefrag		       /sbin/tune2fs
+/bin/diff3			/bin/md5sum.textutils		/bin/python3	    /bin/x86_64-linux-gnu-elfedit    /bin/x86_64-linux-gnu-gp-display-src   /sbin/e2fsck		       /sbin/update-grub2
+/bin/enc2xs			/bin/pdb3			/bin/python3.11     /bin/x86_64-linux-gnu-gcc	     /bin/x86_64-linux-gnu-gp-display-text  /sbin/e2image
+/bin/gcc-12			/bin/pdb3.11			/bin/sha1sum	    /bin/x86_64-linux-gnu-gcc-12     /bin/x86_64-linux-gnu-gprof	    /sbin/e2label
+/bin/gcc-ar-12			/bin/perl5.36.0			/bin/sha224sum	    /bin/x86_64-linux-gnu-gcc-ar     /bin/x86_64-linux-gnu-gprofng	    /sbin/e2mmpstatus
+/bin/gcc-nm-12			/bin/perl5.36-x86_64-linux-gnu	/bin/sha256sum	    /bin/x86_64-linux-gnu-gcc-ar-12  /bin/x86_64-linux-gnu-ld		    /sbin/e2scrub
+/bin/gcc-ranlib-12		/bin/ping4			/bin/sha384sum	    /bin/x86_64-linux-gnu-gcc-nm     /bin/x86_64-linux-gnu-ld.bfd	    /sbin/e2scrub_all
+$                                                                                $                                                                                                                                                                                                                                      $ PS1='$(whoami)@$(hostname)-$(date +%H:%M)> '
+eltex-v21@eltex-2026-summer-01:03> export PS1
+eltex-v21@eltex-2026-summer-01:08> bash
+eltex-v21@eltex-2026-summer:~$ echo "$PS1"
+${debian_chroot:+($debian_chroot)}\u@\h:\w\$ 
+eltex-v21@eltex-2026-summer:~$ exit
+exit
+eltex-v21@eltex-2026-summer-01:11> export PS1
+eltex-v21@eltex-2026-summer-01:11> bash --noprofile --norc
+eltex-v21@eltex-2026-summer-01:11> echo "$PS1"
+$(whoami)@$(hostname)-$(date +%H:%M)> 
+eltex-v21@eltex-2026-summer-01:15> mkdir -p ~/"$(date +%Y)"-{01..12}
+eltex-v21@eltex-2026-summer-01:20> ls -d ~/"$(date +%Y)"-*
+/home/eltex-v21/2026-01  /home/eltex-v21/2026-03  /home/eltex-v21/2026-05  /home/eltex-v21/2026-07  /home/eltex-v21/2026-09  /home/eltex-v21/2026-11
+/home/eltex-v21/2026-02  /home/eltex-v21/2026-04  /home/eltex-v21/2026-06  /home/eltex-v21/2026-08  /home/eltex-v21/2026-10  /home/eltex-v21/2026-12
+eltex-v21@eltex-2026-summer-01:21> 
