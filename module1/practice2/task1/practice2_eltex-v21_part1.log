@@ -1,0 +1,710 @@
+$ echo "$MYUSER"
+eltex-v21
+$ ls -l "$LOG"
+-rw-r--r-- 1 eltex-v21 eltex-v21 42 июл  8 19:37 practice2_eltex-v21_part1.log
+$ ls -l ~/.ssh
+total 16
+-rw------- 1 eltex-v21 eltex-v21 2622 июл  8 12:00 id_rsa
+-rw-r--r-- 1 eltex-v21 eltex-v21  581 июл  8 12:00 id_rsa.pub
+-rw------- 1 eltex-v21 eltex-v21  978 июл  8 12:11 known_hosts
+-rw------- 1 eltex-v21 eltex-v21  142 июл  8 12:09 known_hosts.old
+$ cat ~/.ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDB6trJEySqu3nBZNsTtpe09+CVCuq7N4sfyr5dfj+3g9RXv0VgB4C+JtFMqZ1AGn64lfZARvcBJvNm9NY3qMeBOAuhbFUzNkxbAKT0esAkqdZMFCSa9N7aRB0aDzq/Oqyt6NdiSlLn79k8Do1KCo1Kfvs6B0fQvf5aWrTg0qqYbBNfzdsv6Ca3ORn/0hUXJKVormXKb5OxcSZ7PMOvFLdXpYIiIe5ehGOwZDHbDTTE+aoG2k8fMEL1xMlL2vg1sQpzRS1ULAOv+LE0TG95DYu8CFRA3ht5IBnKZ+7bVAK8LwWCAoxlRYLYSSaO5bihgZGr47AY/l8DYWbCd1XD0gIuSG9D8E1uYlsPSjyaJ3AJKGtTHJKwDoh/kHunYmeiL6Fy0as+WcjeCEMUuA98v3QwYabzIRQEC2BzO77DVyhfkXfHtiA08m+2P1KPagY2ufxdwxXPAm+jblEtIm/mQ5QZjBTWT4H/BKir6scOCIeNhw7u8GVAYJ5htCjzl41f6Ps= eltex-v21@eltex-2026-summer
+$ ssh-copy-id -i ~/.ssh/id_rsa.pub root@172.16.9.195
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/eltex-v21/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+
+/usr/bin/ssh-copy-id: WARNING: All keys were skipped because they already exist on the remote system.
+		(if you think this is a mistake, you may want to use -f option)
+
+$ ssh root@172.16.9.195 "cat ~/.ssh/authorized_keys"
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDB6trJEySqu3nBZNsTtpe09+CVCuq7N4sfyr5dfj+3g9RXv0VgB4C+JtFMqZ1AGn64lfZARvcBJvNm9NY3qMeBOAuhbFUzNkxbAKT0esAkqdZMFCSa9N7aRB0aDzq/Oqyt6NdiSlLn79k8Do1KCo1Kfvs6B0fQvf5aWrTg0qqYbBNfzdsv6Ca3ORn/0hUXJKVormXKb5OxcSZ7PMOvFLdXpYIiIe5ehGOwZDHbDTTE+aoG2k8fMEL1xMlL2vg1sQpzRS1ULAOv+LE0TG95DYu8CFRA3ht5IBnKZ+7bVAK8LwWCAoxlRYLYSSaO5bihgZGr47AY/l8DYWbCd1XD0gIuSG9D8E1uYlsPSjyaJ3AJKGtTHJKwDoh/kHunYmeiL6Fy0as+WcjeCEMUuA98v3QwYabzIRQEC2BzO77DVyhfkXfHtiA08m+2P1KPagY2ufxdwxXPAm+jblEtIm/mQ5QZjBTWT4H/BKir6scOCIeNhw7u8GVAYJ5htCjzl41f6Ps= eltex-v21@eltex-2026-summer
+$ ssh root@172.16.9.195 "ls -l ~/.ssh/authorized_keys"
+-rw------- 1 root root 581 Jul  8 05:11 /root/.ssh/authorized_keys
+$ ssh root@172.16.9.195 "id user1"
+id: ‘user1’: no such user
+$ ssh root@172.16.9.195 "useradd -m -s /bin/bash user1"
+$ ssh root@172.16.9.195 "id user1"
+uid=1001(user1) gid=1001(user1) groups=1001(user1)
+$ ssh root@172.16.9.195 "grep ^user1: /etc/passwd"
+user1:x:1001:1001::/home/user1:/bin/bash
+$ ssh root@172.16.9.195 "ls -ld /home/user1"
+drwxr-x--- 2 user1 user1 4096 Jul  8 12:51 /home/user1
+$ ssh root@172.16.9.195 "passwd -S user1"
+user1 P 2026-07-08 0 99999 7 -1
+$ ssh root@172.16.9.195 "id user1"
+uid=1001(user1) gid=1001(user1) groups=1001(user1)
+$ ssh root@172.16.9.195 "grep ^user1: /etc/passwd"
+user1:x:1001:1001::/home/user1:/bin/bash
+$ ssh root@172.16.9.195 "ls -ld /home/user1"
+drwxr-x--- 2 user1 user1 4096 Jul  8 12:51 /home/user1
+Script started on 2026-07-08 20:21:12+07:00 [TERM="dumb" TTY="/dev/pts/20" COLUMNS="115" LINES="30"]
+eltex-v21@eltex-2026-summer:~$ ssh root@172.16.9.195
+Welcome to Ubuntu 24.04.2 LTS (GNU/Linux 6.8.0-55-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Wed Jul  8 01:23:26 PM UTC 2026
+
+  System load:  0.01               Processes:              110
+  Usage of /:   44.1% of 14.66GB   Users logged in:        0
+  Memory usage: 6%                 IPv4 address for ens18: 172.16.9.195
+  Swap usage:   0%
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+263 updates can be applied immediately.
+198 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+Last login: Wed Jul  8 12:54:11 2026 from 172.16.8.4
+root@eltex-practice2-v21:~# adduser user2
+info: Adding user `user2' ...
+info: Selecting UID/GID from range 1000 to 59999 ...
+info: Adding new group `user2' (1002) ...
+info: Adding new user `user2' (1002) with group `user2 (1002)' ...
+info: Creating home directory `/home/user2' ...
+info: Copying files from `/etc/skel' ...
+New password: 
+Retype new password: 
+passwd: password updated successfully
+Changing the user information for user2
+Enter the new value, or press ENTER for the default
+	Full Name []: 
+	Room Number []: 
+	Work Phone []: 
+	Home Phone []: 
+	Other []: 
+Is the information correct? [Y/n] Y
+info: Adding new user `user2' to supplemental / extra groups `users' ...
+info: Adding user `user2' to group `users' ...
+root@eltex-practice2-v21:~# adduser user3
+info: Adding user `user3' ...
+info: Selecting UID/GID from range 1000 to 59999 ...
+info: Adding new group `user3' (1003) ...
+info: Adding new user `user3' (1003) with group `user3 (1003)' ...
+info: Creating home directory `/home/user3' ...
+info: Copying files from `/etc/skel' ...
+New password: 
+Retype new password: 
+passwd: password updated successfully
+Changing the user information for user3
+Enter the new value, or press ENTER for the default
+	Full Name []: 
+	Room Number []: 
+	Work Phone []: 
+	Home Phone []: 
+	Other []: 
+Is the information correct? [Y/n] Y
+info: Adding new user `user3' to supplemental / extra groups `users' ...
+info: Adding user `user3' to group `users' ...
+root@eltex-practice2-v21:~# id user2
+uid=1002(user2) gid=1002(user2) groups=1002(user2),100(users)
+root@eltex-practice2-v21:~# id user3
+uid=1003(user3) gid=1003(user3) groups=1003(user3),100(users)
+root@eltex-practice2-v21:~# grep '^user2:' /etc/passwd
+user2:x:1002:1002:,,,:/home/user2:/bin/bash
+root@eltex-practice2-v21:~# grep '^user3:' /etc/passwd
+user3:x:1003:1003:,,,:/home/user3:/bin/bash
+root@eltex-practice2-v21:~# ls -ld /home/user2 /home/user3
+drwxr-x--- 2 user2 user2 4096 Jul  8 13:24 /home/user2
+drwxr-x--- 2 user3 user3 4096 Jul  8 13:25 /home/user3
+root@eltex-practice2-v21:~# exit
+logout
+Connection to 172.16.9.195 closed.
+eltex-v21@eltex-2026-summer:~$ exit
+exit
+
+Script done on 2026-07-08 20:28:23+07:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-07-08 20:41:40+07:00 [TERM="dumb" TTY="/dev/pts/20" COLUMNS="115" LINES="30"]
+eltex-v21@eltex-2026-summer:~$ ssh root@172.16.9.195
+Welcome to Ubuntu 24.04.2 LTS (GNU/Linux 6.8.0-55-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Wed Jul  8 01:41:50 PM UTC 2026
+
+  System load:  0.08               Processes:              112
+  Usage of /:   44.1% of 14.66GB   Users logged in:        0
+  Memory usage: 6%                 IPv4 address for ens18: 172.16.9.195
+  Swap usage:   0%
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+263 updates can be applied immediately.
+198 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+Last login: Wed Jul  8 13:23:27 2026 from 172.16.8.4
+root@eltex-practice2-v21:~# man usermod
+WARNING: terminal is not fully functional
+Press RETURN to continue 
+[4mUSERMOD[24m(8)                                 System Management Commands                                 [4mUSERMOD[24m(8)[m
+[m
+[1mNAME[0m[m
+       usermod - modify a user account[m
+[m
+[1mSYNOPSIS[0m[m
+[m
+       [1musermod [22m[[4moptions[24m] [4mLOGIN[0m[m
+[m
+[1mDESCRIPTION[0m[m
+       The [1musermod [22mcommand modifies the system account files.[m
+[m
+[1mOPTIONS[0m[m
+       The options which apply to the [1musermod [22mcommand are:[m
+[m
+       [1m-a[22m, [1m--append[0m[m
+           Add the user to the supplementary group(s). Use only with the [1m-G [22moption.[m
+[m
+       [1m-b[22m, [1m--badname[0m[m
+           Allow names that do not conform to standards.[m
+[m
+       [1m-c[22m, [1m--comment [4m[22mCOMMENT[0m[m
+           update the comment field of the user in /etc/passwd, which is normally modified using the [1mchfn[22m(1)[m
+           utility.[m
+[m
+       [1m-d[22m, [1m--home [4m[22mHOME_DIR[0m[m
+           The user's new login directory.[m
+[m
+           If the [1m-m [22moption is given, the contents of the current home directory will be moved to the new home[m
+ Manual page usermod(8) line 1 (press h for help or q to quit)root@eltex-practice2-v21:~# 
+root@eltex-practice2-v21:~# q
+Command 'q' not found, but can be installed with:
+snap install q                       # version 1.6.3-1, or
+apt  install python3-q-text-as-data  # version 3.1.6-3
+See 'snap info q' for additional versions.
+root@eltex-practice2-v21:~# usermod -s /usr/sbin/nologin user3
+root@eltex-practice2-v21:~# grep '^user3:' /etc/passwd
+user3:x:1003:1003:,,,:/home/user3:/usr/sbin/nologin
+root@eltex-practice2-v21:~# su user3
+This account is currently not available.
+root@eltex-practice2-v21:~# su -s /bin/bash user3
+user3@eltex-practice2-v21:/root$ Vhoa    whoami
+user3
+user3@eltex-practice2-v21:/root$ logout
+bash: logout: not login shell: use `exit'
+user3@eltex-practice2-v21:/root$ exit
+exit
+root@eltex-practice2-v21:~# exit
+logout
+Connection to 172.16.9.195 closed.
+eltex-v21@eltex-2026-summer:~$ exit
+exit
+
+Script done on 2026-07-08 20:50:31+07:00 [COMMAND_EXIT_CODE="1"]
+Script started on 2026-07-08 20:58:26+07:00 [TERM="dumb" TTY="/dev/pts/20" COLUMNS="115" LINES="30"]
+eltex-v21@eltex-2026-summer:~$ ssh root@172.16.9.195
+Welcome to Ubuntu 24.04.2 LTS (GNU/Linux 6.8.0-55-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Wed Jul  8 01:58:46 PM UTC 2026
+
+  System load:  0.0                Processes:              111
+  Usage of /:   44.1% of 14.66GB   Users logged in:        0
+  Memory usage: 6%                 IPv4 address for ens18: 172.16.9.195
+  Swap usage:   0%
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+263 updates can be applied immediately.
+198 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+Last login: Wed Jul  8 13:41:50 2026 from 172.16.8.4
+root@eltex-practice2-v21:~# groupadd practice_group
+root@eltex-practice2-v21:~# v usermod -aG practice_group user1
+root@eltex-practice2-v21:~# usermod -aG practice_group user2
+root@eltex-practice2-v21:~# usermod -aG practice_group user3
+root@eltex-practice2-v21:~# groups user1
+user1 : user1 practice_group
+root@eltex-practice2-v21:~# groups user2
+user2 : user2 users practice_group
+root@eltex-practice2-v21:~# groups user3
+user3 : user3 users practice_group
+root@eltex-practice2-v21:~# id user1
+uid=1001(user1) gid=1001(user1) groups=1001(user1),1004(practice_group)
+root@eltex-practice2-v21:~# id user2
+uid=1002(user2) gid=1002(user2) groups=1002(user2),100(users),1004(practice_group)
+root@eltex-practice2-v21:~# id user3
+uid=1003(user3) gid=1003(user3) groups=1003(user3),100(users),1004(practice_group)
+root@eltex-practice2-v21:~# exit
+logout
+Connection to 172.16.9.195 closed.
+eltex-v21@eltex-2026-summer:~$ exit
+exit
+
+Script done on 2026-07-08 21:03:12+07:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-07-08 21:33:09+07:00 [TERM="dumb" TTY="/dev/pts/20" COLUMNS="115" LINES="30"]
+eltex-v21@eltex-2026-summer:~$ ssh root@172.16.9.195
+Welcome to Ubuntu 24.04.2 LTS (GNU/Linux 6.8.0-55-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Wed Jul  8 02:35:58 PM UTC 2026
+
+  System load:  0.0                Processes:              109
+  Usage of /:   44.1% of 14.66GB   Users logged in:        0
+  Memory usage: 6%                 IPv4 address for ens18: 172.16.9.195
+  Swap usage:   0%
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+263 updates can be applied immediately.
+198 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+Last login: Wed Jul  8 13:58:46 2026 from 172.16.8.4
+root@eltex-practice2-v21:~# mkdir -p /opt/share
+root@eltex-practice2-v21:~# mkdir -p /opt/share                   chgrp practice_group /opt/share
+root@eltex-practice2-v21:~# chmod g+rwx /opt/share
+root@eltex-practice2-v21:~# chmod g+s /opt/share
+root@eltex-practice2-v21:~# ls -ld /opt/share
+drwxrwsr-x 2 root practice_group 4096 Jul  8 14:36 /opt/share
+root@eltex-practice2-v21:~# уч  exit
+logout
+Connection to 172.16.9.195 closed.
+eltex-v21@eltex-2026-summer:~$ exit
+exit
+
+Script done on 2026-07-08 21:40:43+07:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-07-08 21:49:08+07:00 [TERM="dumb" TTY="/dev/pts/20" COLUMNS="115" LINES="30"]
+eltex-v21@eltex-2026-summer:~$ ssh root@172.16.9.195
+Welcome to Ubuntu 24.04.2 LTS (GNU/Linux 6.8.0-55-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Wed Jul  8 02:49:28 PM UTC 2026
+
+  System load:  0.0                Processes:              110
+  Usage of /:   44.1% of 14.66GB   Users logged in:        0
+  Memory usage: 6%                 IPv4 address for ens18: 172.16.9.195
+  Swap usage:   0%
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+263 updates can be applied immediately.
+198 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+Last login: Wed Jul  8 14:35:59 2026 from 172.16.8.4
+root@eltex-practice2-v21:~# echo 'umask 027' >> /home/user1/.profile
+root@eltex-practice2-v21:~# tail -n 3 /home/user1/.profile
+    PATH="$HOME/.local/bin:$PATH"
+fi
+umask 027
+root@eltex-practice2-v21:~# su - user1
+user1@eltex-practice2-v21:~$ umask
+0027
+user1@eltex-practice2-v21:~$ touch /opt/share/user1_umask_test.txt
+user1@eltex-practice2-v21:~$ mkdir /opt/share/user1_umask_test_dir
+user1@eltex-practice2-v21:~$ ls -l /opt/share/user1_umask_test.txt
+-rw-r----- 1 user1 practice_group 0 Jul  8 14:52 /opt/share/user1_umask_test.txt
+user1@eltex-practice2-v21:~$ ls -ld /opt/share/user1_umask_test_dir
+drwxr-s--- 2 user1 practice_group 4096 Jul  8 14:52 /opt/share/user1_umask_test_dir
+user1@eltex-practice2-v21:~$ exit
+logout
+root@eltex-practice2-v21:~# exit
+logout
+Connection to 172.16.9.195 closed.
+eltex-v21@eltex-2026-summer:~$ exit
+exit
+
+Script done on 2026-07-08 21:54:08+07:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-07-08 22:02:24+07:00 [TERM="dumb" TTY="/dev/pts/20" COLUMNS="115" LINES="30"]
+eltex-v21@eltex-2026-summer:~$ ssh root@172.16.9.195
+Welcome to Ubuntu 24.04.2 LTS (GNU/Linux 6.8.0-55-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Wed Jul  8 03:02:40 PM UTC 2026
+
+  System load:  0.01               Processes:              110
+  Usage of /:   44.1% of 14.66GB   Users logged in:        0
+  Memory usage: 6%                 IPv4 address for ens18: 172.16.9.195
+  Swap usage:   0%
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+263 updates can be applied immediately.
+198 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+Last login: Wed Jul  8 14:49:28 2026 from 172.16.8.4
+root@eltex-practice2-v21:~# su -s /bin/bash user1 -c 'touch /opt/share/file_from_user1.txt'
+root@eltex-practice2-v21:~# su -s /bin/bash user2 -c 'touch /opt/share/file_from_user2.txt'
+root@eltex-practice2-v21:~# su -s /bin/bash user3 -c 'touch /opt/share/file_from_user3.txt'
+root@eltex-practice2-v21:~# ls -l /opt/share
+total 4
+-rw-rw-r-- 1 user1 practice_group    0 Jul  8 15:03 file_from_user1.txt
+-rw-rw-r-- 1 user2 practice_group    0 Jul  8 15:03 file_from_user2.txt
+-rw-rw-r-- 1 user3 practice_group    0 Jul  8 15:03 file_from_user3.txt
+drwxr-s--- 2 user1 practice_group 4096 Jul  8 14:52 user1_umask_test_dir
+-rw-r----- 1 user1 practice_group    0 Jul  8 14:52 user1_umask_test.txt
+root@eltex-practice2-v21:~# su -s /bin/bash user1 -c 'rm /opt/share/file_from_user2.txt'
+root@eltex-practice2-v21:~# su -s /bin/bash user2 -c 'rm /opt/share/file_from_user3.txt'
+root@eltex-practice2-v21:~# su -s /bin/bash user3 -c 'rm /opt/share/file_from_user1.txt'
+root@eltex-practice2-v21:~# exit
+logout
+Connection to 172.16.9.195 closed.
+eltex-v21@eltex-2026-summer:~$ exit
+exit
+
+Script done on 2026-07-08 22:06:06+07:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-07-08 22:10:49+07:00 [TERM="dumb" TTY="/dev/pts/20" COLUMNS="115" LINES="30"]
+eltex-v21@eltex-2026-summer:~$ ssh root@172.16.9.195
+Welcome to Ubuntu 24.04.2 LTS (GNU/Linux 6.8.0-55-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Wed Jul  8 03:11:09 PM UTC 2026
+
+  System load:  0.0                Processes:              113
+  Usage of /:   44.1% of 14.66GB   Users logged in:        0
+  Memory usage: 6%                 IPv4 address for ens18: 172.16.9.195
+  Swap usage:   0%
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+263 updates can be applied immediately.
+198 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+Last login: Wed Jul  8 15:02:41 2026 from 172.16.8.4
+root@eltex-practice2-v21:~# ls -l /opt/share
+total 4
+drwxr-s--- 2 user1 practice_group 4096 Jul  8 14:52 user1_umask_test_dir
+-rw-r----- 1 user1 practice_group    0 Jul  8 14:52 user1_umask_test.txt
+root@eltex-practice2-v21:~# chmod +t /opt/share
+root@eltex-practice2-v21:~# ls -ld /opt/share
+drwxrwsr-t 3 root practice_group 4096 Jul  8 15:05 /opt/share
+root@eltex-practice2-v21:~# su -s /bin/bash user1 -c 'touch /opt/share/sticky_file_from_user1.txt'
+root@eltex-practice2-v21:~# su -s /bin/bash user2 -c 'touch /opt/share/sticky_file_from_user2.txt'
+root@eltex-practice2-v21:~# su -s /bin/bash user3 -c 'touch /opt/share/sticky_file_from_user3.txt'
+root@eltex-practice2-v21:~# ls -l /opt/share
+total 4
+-rw-rw-r-- 1 user1 practice_group    0 Jul  8 15:27 sticky_file_from_user1.txt
+-rw-rw-r-- 1 user2 practice_group    0 Jul  8 15:27 sticky_file_from_user2.txt
+-rw-rw-r-- 1 user3 practice_group    0 Jul  8 15:28 sticky_file_from_user3.txt
+drwxr-s--- 2 user1 practice_group 4096 Jul  8 14:52 user1_umask_test_dir
+-rw-r----- 1 user1 practice_group    0 Jul  8 14:52 user1_umask_test.txt
+root@eltex-practice2-v21:~# su -s /bin/bash user1 -c 'rm /opt/share/sticky_file_from_user2.txt'
+rm: cannot remove '/opt/share/sticky_file_from_user2.txt': Operation not permitted
+root@eltex-practice2-v21:~# su -s /bin/bash user2 -c 'rm /opt/share/sticky_file_from_user3.txt'
+rm: cannot remove '/opt/share/sticky_file_from_user3.txt': Operation not permitted
+root@eltex-practice2-v21:~# su -s /bin/bash user3 -c 'rm /opt/share/sticky_file_from_user1.txt'
+rm: cannot remove '/opt/share/sticky_file_from_user1.txt': Operation not permitted
+root@eltex-practice2-v21:~# ls -l /opt/share
+total 4
+-rw-rw-r-- 1 user1 practice_group    0 Jul  8 15:27 sticky_file_from_user1.txt
+-rw-rw-r-- 1 user2 practice_group    0 Jul  8 15:27 sticky_file_from_user2.txt
+-rw-rw-r-- 1 user3 practice_group    0 Jul  8 15:28 sticky_file_from_user3.txt
+drwxr-s--- 2 user1 practice_group 4096 Jul  8 14:52 user1_umask_test_dir
+-rw-r----- 1 user1 practice_group    0 Jul  8 14:52 user1_umask_test.txt
+root@eltex-practice2-v21:~# which dmesg
+/usr/bin/dmesg
+root@eltex-practice2-v21:~# echo 'user1 ALL=(root) NOPASSWD: /usr/bin/dmesg' > /etc/sudoers.d/user1-dmesg
+root@eltex-practice2-v21:~# chmod 440 /etc/sudoers.d/user1-dmesg
+root@eltex-practice2-v21:~# visudo -cf /etc/sudoers.d/user1-dmesg
+/etc/sudoers.d/user1-dmesg: parsed OK
+root@eltex-practice2-v21:~# su - user1 -c 'sudo /usr/bin/dmesg | head -n 5'
+[    0.000000] Linux version 6.8.0-55-generic (buildd@lcy02-amd64-095) (x86_64-linux-gnu-gcc-13 (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #57-Ubuntu SMP PREEMPT_DYNAMIC Wed Feb 12 23:42:21 UTC 2025 (Ubuntu 6.8.0-55.57-generic 6.8.12)
+[    0.000000] Command line: BOOT_IMAGE=/vmlinuz-6.8.0-55-generic root=/dev/mapper/ubuntu--vg-ubuntu--lv ro
+[    0.000000] KERNEL supported cpus:
+[    0.000000]   Intel GenuineIntel
+[    0.000000]   AMD AuthenticAMD
+root@eltex-practice2-v21:~# cat > /usr/local/bin/user2_dmesg.sh <<'EOF'
+> #!/bin/bash
+> /usr/bin/dmesg
+> EOF
+root@eltex-practice2-v21:~# chown root:root /usr/local/bin/user2_dmesg.sh
+root@eltex-practice2-v21:~# chmod 4755 /usr/local/bin/user2_dmesg.sh
+root@eltex-practice2-v21:~# ls -l /usr/local/bin/user2_dmesg.sh
+-rwsr-xr-x 1 root root 27 Jul  8 15:45 /usr/local/bin/user2_dmesg.sh
+root@eltex-practice2-v21:~# su - user2 -c '/usr/local/bin/user2_dmesg.sh | head -n 5'
+dmesg: read kernel buffer failed: Operation not permitted
+root@eltex-practice2-v21:~# su - user2 -c 'id'
+uid=1002(user2) gid=1002(user2) groups=1002(user2),100(users),1004(practice_group)
+root@eltex-practice2-v21:~# chage -M 10 user1
+root@eltex-practice2-v21:~# chage -M 10 user2
+root@eltex-practice2-v21:~# chage -M 10 user3
+root@eltex-practice2-v21:~# chage -l user1
+Last password change					: Jul 08, 2026
+Password expires					: Jul 18, 2026
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 10
+Number of days of warning before password expires	: 7
+root@eltex-practice2-v21:~# chage -l user2
+Last password change					: Jul 08, 2026
+Password expires					: Jul 18, 2026
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 10
+Number of days of warning before password expires	: 7
+root@eltex-practice2-v21:~# chage -l user3
+Last password change					: Jul 08, 2026
+Password expires					: Jul 18, 2026
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 10
+Number of days of warning before password expires	: 7
+root@eltex-practice2-v21:~# printf 'Gleb Kopac\n' > /etc/motd
+root@eltex-practice2-v21:~# printf 'Gleb Kopach\n' > /etc/motd
+root@eltex-practice2-v21:~# cat /etc/motd
+Gleb Kopach
+root@eltex-practice2-v21:~# rsync -a /etc/ /root/etc_backup/
+root@eltex-practice2-v21:~# ls -ld /root/etc_backup
+drwxr-xr-x 109 root root 4096 Jul  8 15:59 /root/etc_backup
+root@eltex-practice2-v21:~# ls /root/etc_backup | head
+adduser.conf
+alternatives
+apparmor
+apparmor.d
+apport
+apt
+bash.bashrc
+bash_completion
+bash_completion.d
+bindresvport.blacklist
+root@eltex-practice2-v21:~# ls -l /root/etc_backup/passwd /root/etc_backup/group /root/etc_backup/motd
+-rw-r--r-- 1 root root  887 Jul  8 14:01 /root/etc_backup/group
+-rw-r--r-- 1 root root   12 Jul  8 16:01 /root/etc_backup/motd
+-rw-r--r-- 1 root root 1914 Jul  8 13:47 /root/etc_backup/passwd
+root@eltex-practice2-v21:~# cd /root
+root@eltex-practice2-v21:~# tar -czf etc_backup.tar.gz etc_backup
+root@eltex-practice2-v21:~# tar -cjf etc_backup.tar.bz2 etc_backup
+/bin/sh: 1: bzip2: not found
+tar: etc_backup.tar.bz2: Cannot write: Broken pipe
+tar: Child returned status 127
+tar: Error is not recoverable: exiting now
+root@eltex-practice2-v21:~# ls -lh /root/etc_backup.tar.gz
+-rw-r--r-- 1 root root 581K Jul  8 16:07 /root/etc_backup.tar.gz
+root@eltex-practice2-v21:~# which bzip2
+root@eltex-practice2-v21:~# which 7z
+root@eltex-practice2-v21:~# apt update
+[33m0% [Working][0m            Get:1 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+[33m0% [Waiting for headers] [1 InRelease 14.2 kB/126 kB 11%][0m                                                         Hit:2 http://ru.archive.ubuntu.com/ubuntu noble InRelease
+[33m                                                         0% [1 InRelease 14.2 kB/126 kB 11%][0m[33m0% [Waiting for headers] [1 InRelease 14.2 kB/126 kB 11%][0m                                                         Hit:3 http://ru.archive.ubuntu.com/ubuntu noble-updates InRelease
+[33m                                                         0% [1 InRelease 20.0 kB/126 kB 16%][0m[33m0% [Waiting for headers] [1 InRelease 37.3 kB/126 kB 30%][0m                                                         Hit:4 http://ru.archive.ubuntu.com/ubuntu noble-backports InRelease
+[33m                                                         0% [1 InRelease 43.1 kB/126 kB 34%][0m[33m0% [1 InRelease 51.8 kB/126 kB 41%][0m[33m                                   0% [Working][0m[33m24% [Working][0m             Get:5 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [826 kB]
+[33m25% [5 Packages 2,657 B/826 kB 0%][0m[33m                                  56% [Working][0m[33m56% [5 Packages store 0 B] [Waiting for headers][0m[33m                                                56% [Waiting for headers][0m                         Get:6 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1,173 kB]
+[33m56% [6 Packages 15.7 kB/1,173 kB 1%][0m[33m                                    100% [Working][0m[33m100% [6 Packages store 0 B][0m[33m                           100% [Working][0m              Fetched 2,126 kB in 1s (1,811 kB/s)
+Reading package lists... 0%Reading package lists... 0%Reading package lists... 0%Reading package lists... 3%Reading package lists... 3%Reading package lists... 5%Reading package lists... 5%Reading package lists... 5%Reading package lists... 5%Reading package lists... 6%Reading package lists... 6%Reading package lists... 45%Reading package lists... 45%Reading package lists... 63%Reading package lists... 63%Reading package lists... 63%Reading package lists... 63%Reading package lists... 64%Reading package lists... 64%Reading package lists... 67%Reading package lists... 67%Reading package lists... 69%Reading package lists... 69%Reading package lists... 73%Reading package lists... 73%Reading package lists... 75%Reading package lists... 75%Reading package lists... 81%Reading package lists... 81%Reading package lists... 83%Reading package lists... 83%Reading package lists... 83%Reading package lists... 83%Reading package lists... 83%Reading package lists... 83%Reading package lists... 83%Reading package lists... 83%Reading package lists... 83%Reading package lists... 83%Reading package lists... 83%Reading package lists... 83%Reading package lists... 83%Reading package lists... 83%Reading package lists... 83%Reading package lists... 83%Reading package lists... 83%Reading package lists... 83%Reading package lists... 86%Reading package lists... 86%Reading package lists... 87%Reading package lists... 87%Reading package lists... 91%Reading package lists... 91%Reading package lists... 94%Reading package lists... 94%Reading package lists... 98%Reading package lists... 98%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+257 packages can be upgraded. Run 'apt list --upgradable' to see them.
+root@eltex-practice2-v21:~# apt install -y bzip2 p7zip-full
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+The following additional packages will be installed:
+  7zip
+Suggested packages:
+  7zip-standalone 7zip-rar bzip2-doc
+The following NEW packages will be installed:
+  7zip bzip2 p7zip-full
+0 upgraded, 3 newly installed, 0 to remove and 257 not upgraded.
+Need to get 1,883 kB of archives.
+After this operation, 6,430 kB of additional disk space will be used.
+[33m0% [Working][0m            Get:1 http://ru.archive.ubuntu.com/ubuntu noble/universe amd64 7zip amd64 23.01+dfsg-11 [1,846 kB]
+[33m0% [1 7zip 11.8 kB/1,846 kB 1%][0m[33m                               85% [Working][0m             Get:2 http://ru.archive.ubuntu.com/ubuntu noble-updates/main amd64 bzip2 amd64 1.0.8-5.1build0.1 [34.5 kB]
+[33m87% [2 bzip2 34.5 kB/34.5 kB 100%][0m[33m                                  93% [Waiting for headers][0m                         Get:3 http://ru.archive.ubuntu.com/ubuntu noble/universe amd64 p7zip-full all 16.02+transitional.1 [2,500 B]
+[33m93% [3 p7zip-full 2,500 B/2,500 B 100%][0m[33m                                       100% [Working][0m              Fetched 1,883 kB in 1s (3,229 kB/s)
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+
+7[0;29r8[1ASelecting previously unselected package 7zip.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 86670 files and directories currently installed.)
+Preparing to unpack .../7zip_23.01+dfsg-11_amd64.deb ...
+7[30;0f[42m[30mProgress: [  0%][49m[39m [.............................................................................................] 87[30;0f[42m[30mProgress: [  8%][49m[39m [#######......................................................................................] 8Unpacking 7zip (23.01+dfsg-11) ...
+7[30;0f[42m[30mProgress: [ 15%][49m[39m [##############...............................................................................] 8Selecting previously unselected package bzip2.
+Preparing to unpack .../bzip2_1.0.8-5.1build0.1_amd64.deb ...
+7[30;0f[42m[30mProgress: [ 23%][49m[39m [#####################........................................................................] 8Unpacking bzip2 (1.0.8-5.1build0.1) ...
+7[30;0f[42m[30mProgress: [ 31%][49m[39m [############################.................................................................] 8Selecting previously unselected package p7zip-full.
+Preparing to unpack .../p7zip-full_16.02+transitional.1_all.deb ...
+7[30;0f[42m[30mProgress: [ 38%][49m[39m [###################################..........................................................] 8Unpacking p7zip-full (16.02+transitional.1) ...
+7[30;0f[42m[30mProgress: [ 46%][49m[39m [##########################################...................................................] 8Setting up 7zip (23.01+dfsg-11) ...
+7[30;0f[42m[30mProgress: [ 54%][49m[39m [##################################################...........................................] 87[30;0f[42m[30mProgress: [ 62%][49m[39m [#########################################################....................................] 8Setting up bzip2 (1.0.8-5.1build0.1) ...
+7[30;0f[42m[30mProgress: [ 69%][49m[39m [################################################################.............................] 87[30;0f[42m[30mProgress: [ 77%][49m[39m [#######################################################################......................] 8Setting up p7zip-full (16.02+transitional.1) ...
+7[30;0f[42m[30mProgress: [ 85%][49m[39m [##############################################################################...............] 87[30;0f[42m[30mProgress: [ 92%][49m[39m [#####################################################################################........] 8Processing triggers for man-db (2.12.0-4build2) ...
+
+7[0;30r8[1A[JScanning processes... [                                                                                           ]Scanning processes... [                                                                                           ]Scanning processes... [=                                                                                          ]Scanning processes... [==                                                                                         ]Scanning processes... [===                                                                                        ]Scanning processes... [====                                                                                       ]Scanning processes... [====                                                                                       ]Scanning processes... [=====                                                                                      ]Scanning processes... [======                                                                                     ]Scanning processes... [=======                                                                                    ]Scanning processes... [========                                                                                   ]Scanning processes... [========                                                                                   ]Scanning processes... [=========                                                                                  ]Scanning processes... [==========                                                                                 ]Scanning processes... [===========                                                                                ]Scanning processes... [============                                                                               ]Scanning processes... [============                                                                               ]Scanning processes... [=============                                                                              ]Scanning processes... [==============                                                                             ]Scanning processes... [===============                                                                            ]Scanning processes... [================                                                                           ]Scanning processes... [================                                                                           ]Scanning processes... [=================                                                                          ]Scanning processes... [==================                                                                         ]Scanning processes... [===================                                                                        ]Scanning processes... [====================                                                                       ]Scanning processes... [====================                                                                       ]Scanning processes... [=====================                                                                      ]Scanning processes... [======================                                                                     ]Scanning processes... [=======================                                                                    ]Scanning processes... [========================                                                                   ]Scanning processes... [========================                                                                   ]Scanning processes... [=========================                                                                  ]Scanning processes... [==========================                                                                 ]Scanning processes... [===========================                                                                ]Scanning processes... [============================                                                               ]Scanning processes... [============================                                                               ]Scanning processes... [=============================                                                              ]Scanning processes... [==============================                                                             ]Scanning processes... [===============================                                                            ]Scanning processes... [================================                                                           ]Scanning processes... [=================================                                                          ]Scanning processes... [=================================                                                          ]Scanning processes... [==================================                                                         ]Scanning processes... [===================================                                                        ]Scanning processes... [====================================                                                       ]Scanning processes... [=====================================                                                      ]Scanning processes... [=====================================                                                      ]Scanning processes... [======================================                                                     ]Scanning processes... [=======================================                                                    ]Scanning processes... [========================================                                                   ]Scanning processes... [=========================================                                                  ]Scanning processes... [=========================================                                                  ]Scanning processes... [==========================================                                                 ]Scanning processes... [===========================================                                                ]Scanning processes... [============================================                                               ]Scanning processes... [=============================================                                              ]Scanning processes... [=============================================                                              ]Scanning processes... [==============================================                                             ]Scanning processes... [===============================================                                            ]Scanning processes... [================================================                                           ]Scanning processes... [=================================================                                          ]Scanning processes... [=================================================                                          ]Scanning processes... [==================================================                                         ]Scanning processes... [===================================================                                        ]Scanning processes... [====================================================                                       ]Scanning processes... [=====================================================                                      ]Scanning processes... [=====================================================                                      ]Scanning processes... [======================================================                                     ]Scanning processes... [=======================================================                                    ]Scanning processes... [========================================================                                   ]Scanning processes... [=========================================================                                  ]Scanning processes... [=========================================================                                  ]Scanning processes... [==========================================================                                 ]Scanning processes... [===========================================================                                ]Scanning processes... [============================================================                               ]Scanning processes... [=============================================================                              ]Scanning processes... [==============================================================                             ]Scanning processes... [==============================================================                             ]Scanning processes... [===============================================================                            ]Scanning processes... [================================================================                           ]Scanning processes... [=================================================================                          ]Scanning processes... [==================================================================                         ]Scanning processes... [==================================================================                         ]Scanning processes... [===================================================================                        ]Scanning processes... [====================================================================                       ]Scanning processes... [=====================================================================                      ]Scanning processes... [======================================================================                     ]Scanning processes... [======================================================================                     ]Scanning processes... [=======================================================================                    ]Scanning processes... [========================================================================                   ]Scanning processes... [=========================================================================                  ]Scanning processes... [==========================================================================                 ]Scanning processes... [==========================================================================                 ]Scanning processes... [===========================================================================                ]Scanning processes... [============================================================================               ]Scanning processes... [=============================================================================              ]Scanning processes... [==============================================================================             ]Scanning processes... [==============================================================================             ]Scanning processes... [===============================================================================            ]Scanning processes... [================================================================================           ]Scanning processes... [=================================================================================          ]Scanning processes... [==================================================================================         ]Scanning processes... [==================================================================================         ]Scanning processes... [===================================================================================        ]Scanning processes... [====================================================================================       ]Scanning processes... [=====================================================================================      ]Scanning processes... [======================================================================================     ]Scanning processes... [======================================================================================     ]Scanning processes... [=======================================================================================    ]Scanning processes... [========================================================================================   ]Scanning processes... [=========================================================================================  ]Scanning processes... [========================================================================================== ]Scanning processes... [===========================================================================================]Scanning processes...                                                                                              
+Scanning linux images... [                                                                                        ]Scanning linux images... [=============================                                                           ]Scanning linux images... [==========================================================                              ]Scanning linux images... [========================================================================================]Scanning linux images...                                                                                           
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+root@eltex-practice2-v21:~# tar -cjf etc_backup.tar.bz2 etc_backup
+root@eltex-practice2-v21:~# 7z a etc_backup.7z etc_backup
+
+7-Zip 23.01 (x64) : Copyright (c) 1999-2023 Igor Pavlov : 2023-06-20
+ 64-bit locale=en_US.UTF-8 Threads:2 OPEN_MAX:1024
+
+Scanning the drive:
+  0M Scan           
+WARNING: errno=2 : No such file or directory
+etc_backup/os-release
+
+
+WARNING: errno=2 : No such file or directory
+etc_backup/resolv.conf
+
+
+WARNING: errno=2 : No such file or directory
+etc_backup/mtab
+
+  0M 2 Scan  etc_backup/rc4.d/                               36M 1489 Scan  etc_backup/dpkg/                                244 folders, 1507 files, 38698098 bytes (37 MiB)
+
+Creating archive: etc_backup.7z
+
+Add new data to archive: 244 folders, 1507 files, 38698098 bytes (37 MiB)
+
+  0%      0% A etc_backup/alternatives/unlzma                                       7% 1428 + etc_backup/vmware-tools/vgauth/schemas/catalog.xml                                                               14% 1465 + etc_backup/alternatives/ex                                       19% 1475 + etc_backup/alternatives/lzma                                         24% 1475 + etc_backup/alternatives/lzma                                         30% 1484 + etc_backup/alternatives/rview                                          34% 1484 + etc_backup/alternatives/rview                                          38% 1485 + etc_backup/alternatives/rvim                                         42% 1485 + etc_backup/alternatives/rvim                                         46% 1485 + etc_backup/alternatives/rvim                                         50% 1489 + etc_backup/alternatives/vi                                       54% 1489 + etc_backup/alternatives/vi                                       59% 1490 + etc_backup/alternatives/view                                         62% 1490 + etc_backup/alternatives/view                                         64% 1491 + etc_backup/alternatives/vim                                        72% 1491 + etc_backup/alternatives/vim                                        76% 1491 + etc_backup/alternatives/vim                                        80% 1492 + etc_backup/alternatives/vimdiff                                            84% 1492 + etc_backup/alternatives/vimdiff                                            86% 1493 + etc_backup/rmt                           94% 1494 + etc_backup/rmt                           99% 1494 + etc_backup/rmt                          
+Files read from disk: 1494
+Archive size: 4676411 bytes (4567 KiB)
+
+Scan WARNINGS for files and folders:
+
+etc_backup/os-release : errno=2 : No such file or directory
+etc_backup/resolv.conf : errno=2 : No such file or directory
+etc_backup/mtab : errno=2 : No such file or directory
+----------------
+Scan WARNINGS: 3
+root@eltex-practice2-v21:~# ls -lh etc_backup.tar.gz etc_backup.tar.bz2 etc_backup.7z
+-rw-r--r-- 1 root root 4.5M Jul  8 16:12 etc_backup.7z
+-rw-r--r-- 1 root root 547K Jul  8 16:12 etc_backup.tar.bz2
+-rw-r--r-- 1 root root 581K Jul  8 16:07 etc_backup.tar.gz
+root@eltex-practice2-v21:~# date '+%Y-%m-%d %H:%M:%S' > /etc/motd
+root@eltex-practice2-v21:~# cat /etc/motd
+2026-07-08 16:16:23
+root@eltex-practice2-v21:~# rsync -a /etc/ /root/etc_backup/
+root@eltex-practice2-v21:~# cat /root/etc_backup/motd
+2026-07-08 16:16:23
+root@eltex-practice2-v21:~# tar -czf /root/etc_backup.tar.gz -C /root etc_backup
+root@eltex-practice2-v21:~# ls -lh /root/etc_backup.tar.gz
+-rw-r--r-- 1 root root 581K Jul  8 16:17 /root/etc_backup.tar.gz
+root@eltex-practice2-v21:~# tar -tzf /root/etc_backup.tar.gz | grep 'etc_backup/motd'
+etc_backup/motd
+root@eltex-practice2-v21:~# mkdir -p /root/check_gzip
+root@eltex-practice2-v21:~# tar -xzf /root/etc_backup.tar.gz -C /root/check_gzip etc_backup/motd
+root@eltex-practice2-v21:~# cat /root/check_gzip/etc_backup/motd
+2026-07-08 16:16:23
+root@eltex-practice2-v21:~# mkdir -p /root/check_bzip2
+root@eltex-practice2-v21:~# tar -xjf /root/etc_backup.tar.bz2 -C /root/check_bzip2
+root@eltex-practice2-v21:~# ls -ld /root/check_bzip2/etc_backup
+drwxr-xr-x 109 root root 4096 Jul  8 15:59 /root/check_bzip2/etc_backup
+root@eltex-practice2-v21:~# diff -r /root/check_bzip2/etc_backup /root/etc_backup
+diff -r /root/check_bzip2/etc_backup/motd /root/etc_backup/motd
+1c1
+< Gleb Kopach
+---
+> 2026-07-08 16:16:23
+diff: /root/check_bzip2/etc_backup/mtab: No such file or directory
+diff: /root/etc_backup/mtab: No such file or directory
+diff: /root/check_bzip2/etc_backup/os-release: No such file or directory
+diff: /root/etc_backup/os-release: No such file or directory
+diff: /root/check_bzip2/etc_backup/resolv.conf: No such file or directory
+diff: /root/etc_backup/resolv.conf: No such file or directory
+root@eltex-practice2-v21:~# mkdir -p /root/etc_backup_gzip /root/etc_backup_7zip
+root@eltex-practice2-v21:~# tar -xzf /root/etc_backup.tar.gz -C /root/etc_backup_gzip
+root@eltex-practice2-v21:~# 7z x /root/etc_backup.7z -o/root/etc_backup_7zip
+
+7-Zip 23.01 (x64) : Copyright (c) 1999-2023 Igor Pavlov : 2023-06-20
+ 64-bit locale=en_US.UTF-8 Threads:2 OPEN_MAX:1024
+
+Scanning the drive for archives:
+  0M Scan /root/                1 file, 4676411 bytes (4567 KiB)
+
+Extracting archive: /root/etc_backup.7z
+--
+Path = /root/etc_backup.7z
+Type = 7z
+Physical Size = 4676411
+Headers Size = 20691
+Method = LZMA2:24 BCJ
+Solid = +
+Blocks = 2
+
+  0%     83% 1714         Everything is Ok
+
+Folders: 244
+Files: 1507
+Size:       38698098
+Compressed: 4676411
+root@eltex-practice2-v21:~# find /root/etc_backup_gzip -name motd
+/root/etc_backup_gzip/etc_backup/motd
+root@eltex-practice2-v21:~# find /root/etc_backup_7zip -name motd
+/root/etc_backup_7zip/etc_backup/motd
+root@eltex-practice2-v21:~# diff /root/etc_backup_gzip/etc_backup/motd /root/etc_backup_7zip/etc_backup/motd
+1c1
+< 2026-07-08 16:16:23
+---
+> Gleb Kopach
+root@eltex-practice2-v21:~# уч  exit
+logout
+Connection to 172.16.9.195 closed.
+eltex-v21@eltex-2026-summer:~$ exit
+exit
+
+Script done on 2026-07-08 23:31:05+07:00 [COMMAND_EXIT_CODE="1"]
