@@ -267,12 +267,12 @@ int parse_arguments(int argc, char *argv[], struct program_options *options){
 static int wait_for_child(pid_t child_pid){
 
     int status;
-/* Проверяем, не произошла ли ошибка при чтении READY. */
+    /* Ждём завершения ребёнка и получаем информацию о его состоянии. */
     if (waitpid(child_pid, &status, 0) == -1) {
         perror("waitpid");
         return EXIT_FAILURE;
     }
-/* Проверяем, что сообщение получено полностью и равно "READY". */
+    /* Ребёнок завершился самостоятельно через return или exit(). */
     if (WIFEXITED(status)) {
 
         int child_exit_code = WEXITSTATUS(status);
@@ -284,7 +284,7 @@ static int wait_for_child(pid_t child_pid){
             ? EXIT_SUCCESS
             : EXIT_FAILURE;
     }
-/* Определяем режим работы: обычный pipe или именованный FIFO. */
+    /* Ребёнок был принудительно завершён сигналом. */
     if (WIFSIGNALED(status)) {
         fprintf(stderr,
                 "[Родитель] Ребёнок завершён сигналом %d.\n",
