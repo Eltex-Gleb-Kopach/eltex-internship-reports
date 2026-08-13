@@ -1,0 +1,30 @@
+
+R6#enable
+R6#terminal length 0
+R6#show ip route
+Codes: C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area 
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       o - ODR, P - periodic downloaded static route
+
+Gateway of last resort is not set
+
+     172.16.0.0/16 is variably subnetted, 4 subnets, 2 masks
+O E2    172.16.45.0/30 [110/20] via 10.2.26.1, 01:13:10, FastEthernet0/0
+O E2    172.16.15.0/30 [110/20] via 10.2.26.1, 01:13:10, FastEthernet0/0
+O E2    172.16.1.0/24 [110/20] via 10.2.26.1, 01:13:10, FastEthernet0/0
+O E2    172.16.2.0/24 [110/20] via 10.2.26.1, 01:13:10, FastEthernet0/0
+     10.0.0.0/8 is variably subnetted, 8 subnets, 3 masks
+O IA    10.0.0.0/29 [110/2] via 10.2.26.1, 01:30:00, FastEthernet0/0
+C       10.2.3.0/24 is directly connected, FastEthernet1/0
+O       10.2.4.0/24 [110/2] via 10.2.67.2, 01:30:01, FastEthernet2/0
+O IA    10.1.5.0/24 [110/4] via 10.2.67.2, 01:30:01, FastEthernet2/0
+                    [110/4] via 10.2.26.1, 01:30:01, FastEthernet0/0
+C       10.2.26.0/30 is directly connected, FastEthernet0/0
+O       10.2.37.0/30 [110/2] via 10.2.67.2, 01:30:01, FastEthernet2/0
+O IA    10.1.38.0/30 [110/3] via 10.2.67.2, 01:30:01, FastEthernet2/0
+                     [110/3] via 10.2.26.1, 01:30:01, FastEthernet0/0
+C       10.2.67.0/30 is directly connected, FastEthernet2/0
