@@ -83,10 +83,10 @@ int run_publisher(const char *topic)
          */
         while (!is_stop_requested()) {
             struct pollfd input = {
-                .fd = STDIN_FILENO,
-                .events = POLLIN
+                .fd = STDIN_FILENO,//следить за стандартным вводом
+                .events = POLLIN//ждать появления данных для чтения
             };
-
+            /* Ожидаем ввод до 0,1 секунды и проверяем ошибки ожидания. */
             int poll_result = poll(&input, 1, 100);
 
             if (poll_result == -1) {
@@ -98,7 +98,7 @@ int run_publisher(const char *topic)
                 exit_code = EXIT_FAILURE;
                 break;
             }
-
+            /* Если ввода нет, проверяем, существует ли ещё очередь брокера. */
             if (poll_result == 0) {
                 size_t queued_message_count;
 
@@ -118,11 +118,11 @@ int run_publisher(const char *topic)
 
                 continue;
             }
-
+            /* Если появились данные или ввод закрыт, переходим к чтению через fgets(). */
             if ((input.revents & (POLLIN | POLLHUP)) != 0) {
                 break;
             }
-
+            /* При ошибке стандартного ввода завершаем ожидание с ошибкой. */
             if ((input.revents & (POLLERR | POLLNVAL)) != 0) {
                 fprintf(stderr,
                         "Ошибка ожидания пользовательского ввода.\n");
@@ -130,13 +130,13 @@ int run_publisher(const char *topic)
                 break;
             }
         }
-
+        /* Прерываем работу при SIGINT, удалении очереди или другой ошибке. */
         if (is_stop_requested()
             || !queue_available
             || exit_code == EXIT_FAILURE) {
             break;
         }
-
+        /* Читаем сообщение и обрабатываем конец ввода, сигнал или ошибку чтения. */
         errno = 0;
 
         if (fgets(payload, sizeof(payload), stdin) == NULL) {
@@ -153,7 +153,7 @@ int run_publisher(const char *topic)
             exit_code = EXIT_FAILURE;
             break;
         }
-
+        /* Удаляем перевод строки или отбрасываем слишком длинное сообщение. */
         char *newline = strchr(payload, '\n');
 
         if (newline != NULL) {
@@ -174,13 +174,13 @@ int run_publisher(const char *topic)
                     "Ошибка: сообщение слишком длинное.\n");
             continue;
         }
-
+        /* Не отправляем брокеру пустое сообщение. */
         if (payload[0] == '\0') {
             fprintf(stderr,
                     "Ошибка: сообщение не может быть пустым.\n");
             continue;
         }
-
+        /* Формируем команду send и проверяем, что она поместилась в буфер. */
         char message_text[MESSAGE_TEXT_SIZE];
 
         int written = snprintf(message_text,
@@ -196,7 +196,7 @@ int run_publisher(const char *topic)
                     "Ошибка: публикация слишком длинная.\n");
             continue;
         }
-
+        /* Отправляем публикацию брокеру и обрабатываем ошибку очереди. */
         if (send_queue_message(queue_id,
                                BROKER_MESSAGE_TYPE,
                                message_text) == -1) {

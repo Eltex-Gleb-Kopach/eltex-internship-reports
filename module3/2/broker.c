@@ -367,7 +367,8 @@ int run_broker(void)
 
         return EXIT_FAILURE;
     }
-
+    
+    /* Настраиваем корректное завершение брокера по Ctrl+C. */
     if (install_stop_signal_handler() == -1) {
         perror("sigaction");
         remove_message_queue(queue_id);
@@ -392,6 +393,8 @@ int run_broker(void)
     while (!is_stop_requested()) {
         struct queue_message message;
 
+        /*Пытаемся получить сообщение для брокера без блокировки.
+         * Если очередь пуста, немного ждём; при другой ошибке завершаем работу.*/
         ssize_t bytes_received =
             receive_queue_message_nowait(
                 queue_id,
@@ -417,11 +420,11 @@ int run_broker(void)
             exit_code = EXIT_FAILURE;
             break;
         }
-
+        
         pid_t process_pid;
         char topic[TOPIC_SIZE];
 
-        /* Регистрируем новый процесс-издатель. */
+        /* Получаем PID из команды регистрации и добавляем издателя в список. */
         if (parse_publisher_message(message.text,
                                     "publisher_register",
                                     &process_pid) == 0) {

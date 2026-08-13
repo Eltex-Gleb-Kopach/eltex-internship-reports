@@ -118,16 +118,6 @@ static ssize_t receive_queue_message_with_flags(
     return bytes_received;
 }
 
-ssize_t receive_queue_message(int queue_id,
-                              long message_type,
-                              struct queue_message *message)
-{
-    return receive_queue_message_with_flags(queue_id,
-                                            message_type,
-                                            message,
-                                            0);
-}
-
 ssize_t receive_queue_message_nowait(
     int queue_id,
     long message_type,

@@ -23,11 +23,6 @@ int send_queue_message(int queue_id,
                        long message_type,
                        const char *text);
 
-/* Получает одно сообщение указанного типа. */
-ssize_t receive_queue_message(int queue_id,
-                              long message_type,
-                              struct queue_message *message);
-
 /* Получает сообщение без ожидания, если очередь сейчас пуста. */
 ssize_t receive_queue_message_nowait(
     int queue_id,
